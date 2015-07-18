@@ -1,0 +1,25 @@
+<div class="nav navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<a class="navbar-brand">Dashboard</a>	
+	</div>	
+</div>
+<div class="content">
+	<div class="container">
+		<ul class="nav nav-tabs">
+			<li class="active"><a  ng-href="#/dashboard" >Minhas enquetes</a></li>
+			<li ><a ng-href="#/newpoll" disabled="disabled">Criar enquete</a></li>
+		</ul>
+		<div class="row">
+			<div class="col-md-4 text-center simple-box" ng-repeat="poll in polls">
+				<div class="poll-box">
+					<h3>{{poll.pollName}}</h3>
+					<ul class="list-unstyled">
+						<li ng-repeat="option in poll.options">
+							{{option.name}}: {{option.stats}}
+						</li>
+					</ul>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

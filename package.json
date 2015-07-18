@@ -1,0 +1,16 @@
+{
+  "name": "voted",
+  "version": "0.0.0",
+  "description": "Aplicativo de votação para o FreeCodeCamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joao Paulo Ribeiro <jpnribeiro94@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "method-override": "^2.3.4"
+  }
+}
