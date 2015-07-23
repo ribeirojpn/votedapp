@@ -1,7 +1,7 @@
 <div class="nav navbar-inverse navbar-fixed-top">
 	<div class="container">
-		<a class="navbar-brand">Dashboard</a>	
-	</div>	
+		<a class="navbar-brand">Dashboard</a>
+	</div>
 </div>
 <div class="content">
 	<div class="container">
@@ -12,12 +12,12 @@
 		<div class="row">
 			<div class="col-md-4 text-center simple-box" ng-repeat="poll in polls">
 				<div class="poll-box">
-					<h3>{{poll.pollName}}</h3>
+					<a ng-href="#/usr/{{poll.pollName}}"><h3>{{poll.pollName}}</h3></a>
 					<ul class="list-unstyled">
 						<li ng-repeat="option in poll.options">
 							{{option.name}}: {{option.stats}}
 						</li>
-					</ul>	
+					</ul>
 				</div>
 			</div>
 		</div>

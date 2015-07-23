@@ -80,7 +80,7 @@ module.exports = function(){
 		res.json(polls);
 		console.log('polls enviadas');
 	};
-	
+
 	controller.savePolls = function (req,res) {
 		var poll = req.body;
 		poll._id = ++ID_POLL_INC;
@@ -88,10 +88,10 @@ module.exports = function(){
 			poll.options[i].stats = 0;
 		}
 		polls.push(poll);
-		
+
 		res.json(poll);
 	};
-	
+
 	controller.getPoll = function (req,res) {
 		var idPoll = req.params.id;
 		var poll = polls.filter(function (poll) {
@@ -103,7 +103,20 @@ module.exports = function(){
 			res.status(404).send('Poll não encontrada');
 		}
 	};
-	
+
+	controller.getPollByName = function (req,res) {
+		var namePoll = req.params.pollname;
+		var poll = polls.filter(function (poll) {
+			return poll.pollName == namePoll;
+		})[0];
+		if (poll){
+			res.json(poll);
+			console.log('poll enviada p.');
+		} else {
+			res.status(404).send('Poll não encontrada');
+		}
+	};
+
 	controller.deletePoll = function (req,res) {
 		var idPoll = req.params.id;
 		polls = polls.filter(function(poll){
@@ -111,6 +124,6 @@ module.exports = function(){
 		});
 		res.status(204).end();
 	};
-	
+
 	return controller;
 };

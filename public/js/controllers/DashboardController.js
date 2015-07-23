@@ -1,7 +1,7 @@
 angular.module('voted').controller('DashboardController',function ($scope,$resource) {
 	$scope.polls = [];
 	var Polls = $resource('/dashboard');
-	
+
 	function getPolls(){
 		Polls.query(function(polls){
 			$scope.polls = polls;
