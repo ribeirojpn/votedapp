@@ -1,13 +1,13 @@
 <div class="nav navbar-inverse navbar-fixed-top">
 	<div class="container">
-		<a class="navbar-brand">Dashboard</a>	
-	</div>	
+		<a class="navbar-brand">Dashboard</a>
+	</div>
 </div>
 <div class="content">
 	<div class="container">
 		<ul class="nav nav-tabs">
 			<li ><a  ng-href="#/dashboard" >Minhas enquetes</a></li>
-			<li class="active"><a  disabled="disabled">Criar enquete</a></li>
+			<li class="active"><a disabled="disabled">Criar enquete</a></li>
 		</ul>
 		<p ng-show="mensagem.texto">{{mensagem.texto}}</p>
 		<div class="row">
@@ -16,12 +16,11 @@
 				<form ng-submit="salva()">
 					<div class="form-group">
         				<label for="name">Question</label>
-        				<input type="text" placeholder="Qual foi o melhor filme de super-heroi em 2016?"class="form-control" id="name" required ng-model="poll.pollName">
+        				<input type="text" placeholder="Qual foi o melhor filme de super-heroi em 2016?"class="form-control" id="name" required ng-model="poll.name">
     				</div>
 					<label for="poll-options">Options</label>
 					<div class="poll-options">
-	        				<input type="text" ng-repeat="n in placeholders track by $index" placeholder="{{placeholders[$index]}}" class="form-control" id="opt1" required ng-model="poll.options[$index].name">
-	    				
+	        				<input type="text" ng-repeat="n in placeholders track by $index" placeholder="{{placeholders[$index]}}" class="form-control"  required ng-model="poll.options[$index].name">
 					</div>
 					<div>
 						<button type="button" class="btn btn-default" ng-click="addOption()">

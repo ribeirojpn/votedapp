@@ -3,7 +3,7 @@ module.exports = function(app){
 
 	app.route('/dashboard')
 		.get(controller.getPolls)
-		.post(controller.savePolls);
+		.post(controller.savePoll);
 
 	app.route('/dashboard/:id')
 		.get(controller.getPoll)

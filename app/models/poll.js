@@ -1,6 +1,11 @@
 var mongoose = require('mongoose');
 
 module.exports = function () {
+  var OptionSchema = mongoose.Schema({
+    name: String,
+    value: {type: Number, default: 0}
+  });
+
   var schema = mongoose.Schema({
     name: {
       type : String,
@@ -9,10 +14,8 @@ module.exports = function () {
         unique:true
       }
     },
-    opions: [{
-      name: {type: String},
-      votes: {type: Number, default: 0},
-      require: true
-    }]
-  })
-}
+    options: [{}]
+  });
+
+  return mongoose.model('Poll', schema);
+};

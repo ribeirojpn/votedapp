@@ -3,4 +3,9 @@
 		<a class="navbar-brand">Voted</a>
 	</div>
 </div> -->
-<p>{{poll.pollName}}</p>
+<p>{{poll.name}}</p>
+<ul class="list-unstyled">
+	<li ng-repeat="option in poll.options[0]">
+		{{option.name}}: {{option.value}}
+	</li>
+</ul>

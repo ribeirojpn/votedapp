@@ -14,6 +14,11 @@ angular.module('voted',['ngRoute','ngResource']).config(function ($routeProvider
 		controller: 'NewPollController'
 	});
 
+	$routeProvider.when('/dashboard/:pollid', {
+		templateUrl: 'partials/poll.html',
+		controller: 'PollController'
+	});
+
 	$routeProvider.when('/usr/:pollname', {
 		templateUrl: 'partials/poll.html',
 		controller: 'PollController'
