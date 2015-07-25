@@ -9,8 +9,14 @@
 			<li ><a  ng-href="#/dashboard" >Minhas enquetes</a></li>
 			<li class="active"><a disabled="disabled">Criar enquete</a></li>
 		</ul>
-		<p ng-show="mensagem.texto">{{mensagem.texto}}</p>
-		<div class="row">
+		<div class="newpoll-box"ng-show="mensagem.texto">
+			<h4>{{mensagem.texto}}</h4>
+			<a href='{{mensagem.link}}'><h4>{{mensagem.link}}</h4></a><br/><br/><br/>
+			<button type="button" class="btn btn-default" ng-click="createNewPoll()">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Criar Nova Enquete
+			</button>
+	  </div>
+		<div class="row" ng-hide='mensagem.texto'>
 			<div class="newpoll-box">
 				<h1 class="text-center">New Poll</h1>
 				<form ng-submit="salva()">

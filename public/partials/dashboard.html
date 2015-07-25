@@ -13,11 +13,11 @@
 			<div class="col-md-4 text-center simple-box" ng-repeat="poll in polls">
 				<div class="poll-box">
 					<a ng-href="#/dashboard/{{poll._id}}"><h3>{{poll.name}}</h3></a>
-					<ul class="list-unstyled">
+					<!-- <ul class="list-unstyled">
 						<li ng-repeat="option in poll.options[0]">
 							{{option.name}}: {{option.value}}
 						</li>
-					</ul>
+					</ul> -->
 				</div>
 			</div>
 		</div>

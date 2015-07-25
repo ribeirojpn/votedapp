@@ -1,0 +1,30 @@
+<div class="nav navbar-default navbar-static-top">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2">
+				<a href="#/"><h1>Voted</h1></a>
+			</div>
+			<div class="col-md-10">
+				<div class="menu">
+					<a href="#/dashboard">Dashboard</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+  <div class="content vote-box">
+    <h2 class="text-center">{{poll.name}}</h2>
+    <br/>
+    <ul class="list-unstyled">
+      <fieldset>
+    	<li ng-repeat="option in poll.options[0]">
+    		<input name="box1" type='radio' value="{{option.name}}" id='{{option.name}}'>
+        <label for="{{option.name}}">{{option.name}}</label>
+    	</li>
+    </fieldset>
+    </ul>
+    <br/>
+    <button class="btn btn-success btn-block">Votar</button>
+  </div>
+</div>

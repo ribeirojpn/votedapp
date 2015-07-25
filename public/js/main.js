@@ -20,8 +20,8 @@ angular.module('voted',['ngRoute','ngResource']).config(function ($routeProvider
 	});
 
 	$routeProvider.when('/usr/:pollname', {
-		templateUrl: 'partials/poll.html',
-		controller: 'PollController'
+		templateUrl: 'partials/votepoll.html',
+		controller: 'VotePollController'
 	});
 
 	$routeProvider.otherwise({redirectTo:'/'});
