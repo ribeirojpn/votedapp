@@ -13,6 +13,33 @@
 			<div class="col-md-4 text-center simple-box" ng-repeat="poll in polls">
 				<div class="poll-box">
 					<a ng-href="#/dashboard/{{poll._id}}"><h3>{{poll.name}}</h3></a>
+					<!-- <div class="btn-group " role="group" aria-label="...">
+					  <button type="button" class="btn btn-default">Resultado</button>
+					  <button type="button" class="btn btn-default">Compartilhar</button>
+					  <button type="button" class="btn btn-default">Excluir</button>
+					</div> -->
+					<div class="btn-group btn-group-justified menu-poll" role="group" aria-label="...">
+					  <div class="btn-group" role="group">
+					    <button type="button" class="btn btn-default">
+								<span class="glyphicon glyphicon-stats" aria-hidden="true">
+								</span> Resultado</button>
+					  </div>
+					  <div class="btn-group" role="group">
+					    <button type="button" class="btn btn-default">
+								<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+									 Compartilhar</button>
+					  </div>
+					  <div class="btn-group" role="group">
+					    <button type="button" class="btn btn-default" ng-click='deletePoll({{poll._id}})'>
+								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+									 Excluir</button>
+					  </div>
+					<!-- </div>
+					<ul class="list-unstyled list-inline">
+						<li>Resultado</li>
+						<li>Compartilhar</li>
+						<li>Excluir</li>
+					</ul> -->
 					<!-- <ul class="list-unstyled">
 						<li ng-repeat="option in poll.options[0]">
 							{{option.name}}: {{option.value}}

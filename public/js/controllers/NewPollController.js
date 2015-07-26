@@ -1,11 +1,11 @@
 angular.module('voted').controller('NewPollController',function ($scope,$resource) {
 	var Poll = $resource('/dashboard/:id');
 	$scope.poll = new Poll();
-    $scope.placeholders = ['Option 1', 'Option 2'];
-    $scope.mensagem = {
-        texto:'',
-				link:''
-    };
+  $scope.placeholders = ['Option 1', 'Option 2'];
+  $scope.mensagem = {
+      texto:'',
+			link:''
+  };
 		/* TO-DO
 		* Remover a '?' quando houver
 		*/

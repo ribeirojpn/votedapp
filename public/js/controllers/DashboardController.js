@@ -11,4 +11,8 @@ angular.module('voted').controller('DashboardController',function ($scope,$resou
 		});
 	}
 	getPolls();
+
+	function deletePoll(id) {
+		Polls.fin
+	}
 });
