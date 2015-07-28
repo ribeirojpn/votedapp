@@ -14,5 +14,14 @@ module.exports = function(app){
 		});
 	};
 
+  controller.updatePoll = function (req,res) {
+    var id = req.body._id;
+    Poll.findByIdAndUpdate(id,req.body).exec().then(
+      function (poll) {
+        res.json(poll);
+    }, function (erro) {
+        res.status(500).json(erro);
+    });
+  }
   return controller;
 }

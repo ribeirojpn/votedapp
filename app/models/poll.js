@@ -14,7 +14,7 @@ module.exports = function () {
         unique:true
       }
     },
-    options: [{}]
+    options: []
   });
 
   return mongoose.model('Poll', schema);

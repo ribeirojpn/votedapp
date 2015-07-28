@@ -46,10 +46,11 @@ module.exports = function(app){
 
 	controller.deletePoll = function (req,res) {
 		var idPoll = req.params.id;
-		polls = polls.filter(function(poll){
-			return poll._id != idPoll;
+		Poll.remove({'_id':idPoll}).exec().then(function () {
+			res.status(204).end();
+		},function (erro) {
+			console.error(erro);
 		});
-		res.status(204).end();
 	};
 
 	return controller;

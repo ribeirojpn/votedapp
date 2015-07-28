@@ -1,6 +1,6 @@
 angular.module('voted').controller('DashboardController',function ($scope,$resource) {
 	$scope.polls = [];
-	var Polls = $resource('/dashboard');
+	var Polls = $resource('/dashboard/:id');
 
 	function getPolls(){
 		Polls.query(function(polls){
@@ -12,7 +12,10 @@ angular.module('voted').controller('DashboardController',function ($scope,$resou
 	}
 	getPolls();
 
-	function deletePoll(id) {
-		Polls.fin
+	$scope.deletePoll = function(poll) {
+		Polls.delete({id: poll._id}, getPolls, function (erro) {
+			console.log('Não foi possivel remover a enquete');
+			console.log(erro);
+		});
 	}
 });

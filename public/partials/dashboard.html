@@ -20,17 +20,20 @@
 					</div> -->
 					<div class="btn-group btn-group-justified menu-poll" role="group" aria-label="...">
 					  <div class="btn-group" role="group">
-					    <button type="button" class="btn btn-default">
+
+						  <a type="button" class="btn btn-default" ng-href="#/dashboard/{{poll._id}}">
 								<span class="glyphicon glyphicon-stats" aria-hidden="true">
-								</span> Resultado</button>
+								</span> Resultado
+							</a>
+
 					  </div>
 					  <div class="btn-group" role="group">
-					    <button type="button" class="btn btn-default">
-								<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-									 Compartilhar</button>
-					  </div>
+						    <button type="button" class="btn btn-default">
+									<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+										 Compartilhar</button>
+						</div>
 					  <div class="btn-group" role="group">
-					    <button type="button" class="btn btn-default" ng-click='deletePoll({{poll._id}})'>
+					    <button type="button" class="btn btn-default" ng-click='deletePoll(poll)'>
 								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 									 Excluir</button>
 					  </div>

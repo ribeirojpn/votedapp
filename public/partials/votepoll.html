@@ -19,12 +19,13 @@
     <ul class="list-unstyled">
       <fieldset>
     	<li ng-repeat="option in poll.options[0]">
-    		<input name="box1" type='radio' value="{{option.name}}" id='{{option.name}}'>
+    		<input type='radio' ng-model='choiced.name' value="{{option.name}}" id='{{option.name}}'>
         <label for="{{option.name}}">{{option.name}}</label>
     	</li>
     </fieldset>
     </ul>
+		<p>{{choiced.name}}</p>
     <br/>
-    <button class="btn btn-success btn-block">Votar</button>
+    <button class="btn btn-success btn-block" ng-click='votar()'>Votar</button>
   </div>
 </div>

@@ -10,4 +10,5 @@ angular.module('voted').controller("PollController", function ($scope,$routePara
     };
     console.log(erro);
   });
+  
 });
