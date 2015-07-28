@@ -1,7 +1,72 @@
-.menu {
-	float: right;
-	margin-top: 20px;
+body {
+ font-family: 'Roboto', sans-serif;
 }
+/* Navbar */
+.navbar-default {
+	background-color: white;
+	color: #006064;
+	box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-default a{
+	color: #006064;
+	text-decoration: none;
+}
+.navbardark{
+	background-color: #00838f;
+	color: white;
+	box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbardark a{
+	color: white;
+	text-decoration: none;
+}
+
+.logo {
+	margin:5px 0px 5px;
+	font-size: 35px;
+	font-family: 'Lobster', Monospace;
+}
+.menu {
+	font-size: 20px;
+	float: right;
+	padding-top:15px;
+	font-weight:300;
+}
+/* Landing Page */
+
+.banner {
+	margin-top: 60px;
+	padding: 120px 0;
+	background-color: #00838f;
+	color: white;
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.banner h1 {
+	font-size: 80px;
+	margin-bottom: 20px;
+	font-weight: 400;
+}
+.banner p {
+	font-size: 20px;
+	font-weight: 300;
+}
+.banner .btn-default {
+	text-transform: uppercase;
+	border: 1px solid transparent;
+	padding: 6px 16px;
+	margin-top: 20px;
+	font-size: 16px;
+	background-color: white;
+	color: #00838f;
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.footer {
+	padding: 30px 0;
+}
+/* Dashboard */
 .content {
 	margin-top: 60px;
 	margin-left: auto;
