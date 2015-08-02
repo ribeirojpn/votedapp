@@ -1,8 +1,19 @@
-<!-- <div class="nav navbar-inverse navbar-fixed-top">
+<div class="nav navbar-default navbar-static-top navbardark">
 	<div class="container">
-		<a class="navbar-brand">Voted</a>
+		<div class="row">
+			<div class="col-md-2">
+				<div class="logo">
+					<a href="#/">Voted</a>
+				</div>
+			</div>
+			<div class="col-md-10">
+				<div class="menu">
+					<a href="#/dashboard">Dashboard</a>
+				</div>
+			</div>
+		</div>
 	</div>
-</div> -->
+</div>
 <p>{{poll.name}}</p>
 <ul class="list-unstyled">
 	<li ng-repeat="option in poll.options[0]">
