@@ -17,7 +17,7 @@ module.exports = function () {
 	app.use(session({
 		secret: 'vala votar',
 		resave: true,
-		saveUnitialized: true
+		saveUninitialized: true
 	}));
 	app.use(passport.initialize());
 	app.use(passport.session());
