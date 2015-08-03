@@ -1,16 +1,17 @@
 var passport = require('passport');
-var TwitterStrategy = require('passport-twitter').Strategy;
+// var TwitterStrategy = require('passport-twitter').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 var mongoose = require('mongoose');
 
 module.exports = function () {
 
   var User = mongoose.model('User');
   // Faltando dados do Twitter
-  passport.use(new TwitterStrategy({
-    consumerKey:'',
-    consumerSecret: '',
-    callbackURL: 'http://localhost:3000/auth/twitter/callback'
-  }, function (token, tokenSecret, profile, done) {
+  passport.use(new FacebookStrategy({
+    clientID: '497526977087283',
+    clientSecret: 'c059fa812eb49748c0f5683da6df17be',
+    callbackURL: 'http://localhost:3000/auth/facebook/callback'
+  }, function (accessToken, refreshToken, profile, done) {
     User.findOrCreate(
       {'login': profile.id},
       {'name': profile.displayName},
@@ -19,8 +20,7 @@ module.exports = function () {
           console.log(erro);
           return done(erro);
         }
-        return done(user);
-
+        return done(null,user);
       }
     )
   }));
