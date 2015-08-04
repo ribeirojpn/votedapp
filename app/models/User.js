@@ -12,10 +12,6 @@ module.exports = function () {
     name: {
       type: String,
       require: true
-    },
-    inserted: {
-      type: Date,
-      default: Date.now
     }
   });
   schema.plugin(findOrCreate);

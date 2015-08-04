@@ -14,7 +14,12 @@ module.exports = function () {
         unique:true
       }
     },
-    options: []
+    options: [],
+    author:{
+      type: mongoose.Schema.ObjectId,
+      ref:'User',
+      require:true
+    }
   });
 
   return mongoose.model('Poll', schema);

@@ -6,9 +6,7 @@ angular.module('voted').controller('NewPollController',function ($scope,$resourc
       texto:'',
 			link:''
   };
-		/* TO-DO
-		* Remover a '?' quando houver
-		*/
+	
 	$scope.salva = function () {
 				for (var i = 0; i < $scope.placeholders.length; i++) {
 					  $scope.poll.options[i].value = 0;

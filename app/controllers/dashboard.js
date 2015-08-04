@@ -3,7 +3,7 @@ module.exports = function(app){
 	var controller = {};
 
 	controller.getPolls = function (req, res) {
-		Poll.find().exec().then(function (polls) {
+		Poll.find().where('author').equals(req.user._id).exec().then(function (polls) {
 			res.json(polls);
 		},function (erro) {
 			console.error(erro);
@@ -12,6 +12,7 @@ module.exports = function(app){
 	};
 
 	controller.savePoll = function (req,res) {
+		req.body.author = req.user._id;
 		Poll.create(req.body).then(function (poll) {
 			res.status(201).json(poll);
 		},function (erro) {
