@@ -1,17 +1,57 @@
 var passport = require('passport');
-// var TwitterStrategy = require('passport-twitter').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var mongoose = require('mongoose');
 
 module.exports = function () {
 
   var User = mongoose.model('User');
-  // Faltando dados do Twitter
+
+  // Facebook Oauth Strategy
   passport.use(new FacebookStrategy({
     clientID: '497526977087283',
     clientSecret: 'c059fa812eb49748c0f5683da6df17be',
     callbackURL: 'http://localhost:3000/auth/facebook/callback'
   }, function (accessToken, refreshToken, profile, done) {
+    User.findOrCreate(
+      {'login': profile.id},
+      {'name': profile.displayName},
+      function (erro, user) {
+        if(erro){
+          console.log(erro);
+          return done(erro);
+        }
+        return done(null,user);
+      }
+    )
+  }));
+
+  // Twitter Oauth Strategy
+  passport.use(new TwitterStrategy({
+    consumerKey: 'VX4YymEHUKbHjljNJHgf0cXOR',
+    consumerSecret: 'TtATUc9sjeYFavgE8HV5cdqQpgOy8mZFo3x21zuHFtpPZdN1Ql',
+    callbackURL: "http://localhost:3000/auth/twitter/callback"
+  }, function (token, tokenSecret, profile, done) {
+    User.findOrCreate(
+      {'login': profile.id},
+      {'name': profile.displayName},
+      function (erro, user) {
+        if(erro){
+          console.log(erro);
+          return done(erro);
+        }
+        return done(null,user);
+      }
+    )
+  }));
+
+  // Google Oauth2 Strategy
+  passport.use(new GoogleStrategy({
+    clientID: '783401917437-0oocrqap97h4vg4rdh08apinmf9tiutk.apps.googleusercontent.com',
+    clientSecret: 'ap1mcd6fLJVm_CRrDLpSSZpv',
+    callbackURL: "http://localhost:3000/auth/google/callback"
+  },function(accessToken, refreshToken, profile, done) {
     User.findOrCreate(
       {'login': profile.id},
       {'name': profile.displayName},

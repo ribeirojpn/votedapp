@@ -21,7 +21,11 @@
 				<div class="row">
 					<div class="col-md-2">
 						<div class="logo">
-							<a href="#/">Voted</a>
+							<%if (usuarioLogado.length > 0){%>
+								<a href="#/dashboard">Voted</a>
+							<% } else { %>
+								<a href="#/">Voted</a>
+							<% } %>
 						</div>
 					</div>
 					<div class="col-md-10">
