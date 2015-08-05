@@ -1,10 +1,18 @@
+
 <div class="content">
 	<div class="container">
-	<p>{{poll.name}}</p>
-	<ul class="list-unstyled">
-		<li ng-repeat="option in poll.options[0]">
-			{{option.name}}: {{option.value}}
-		</li>
-	</ul>
+		<div class="result-box">
+			<h1 class="text-center">{{poll.name}} ?</h1>
+			<ul class="list-unstyled">
+				<li ng-repeat="option in poll.options[0]">
+					<h5>{{option.name}}: {{option.value}}</h5>
+					<div class="progress">
+					  <div class="progress-bar" role="progressbar" aria-valuenow="{{options.value}}" aria-valuemin="0" aria-valuemax="{{total}}" style="width: {{option.value}}%;">
+					    <span class="sr-only">{{option.name}}: {{option.value}}</span>
+					  </div>
+					</div>
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>

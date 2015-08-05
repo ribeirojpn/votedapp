@@ -1,8 +1,7 @@
 angular.module('voted').controller('VotePollController', function ($scope,$resource, $routeParams) {
   var Poll = $resource('/usr/:pollname');
-
   $scope.choiced = {name:'asd'};
-
+  $scope.mensagem = {text:''}
   Poll.get({pollname: $routeParams.pollname}, function(poll){
     $scope.poll = poll;
     console.log('poll recebida p.name');
@@ -25,6 +24,7 @@ angular.module('voted').controller('VotePollController', function ($scope,$resou
     $scope.poll.$save()
         .then(function () {
         console.log('Voto adicionado a enquete');
+        $scope.mensagem.text = 'Obrigado pelo seu voto!'
     })
         .catch(function (erro) {
         console.error(erro);
