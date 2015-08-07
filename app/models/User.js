@@ -12,7 +12,7 @@ module.exports = function () {
     name: {
       type: String,
       require: true
-    }
+    },
   });
   schema.plugin(findOrCreate);
   return mongoose.model('User',schema)

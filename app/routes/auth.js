@@ -1,7 +1,7 @@
 var passport = require('passport');
 module.exports = function (app) {
   // FACEBOOK OAUTH
-  app.get('/auth/facebook',passport.authenticate('facebook'));
+  app.get('/auth/facebook',passport.authenticate('facebook',{scope: 'email'}));
   app.get('/auth/facebook/callback',passport.authenticate('facebook', {
     successRedirect: '/#/dashboard',
     failureRedirect: '/#/auth'
@@ -14,7 +14,7 @@ module.exports = function (app) {
   }));
   // GOOGLE OAUTH2
   app.get('/auth/google',passport.authenticate('google', {
-    scope: 'https://www.googleapis.com/auth/plus.login'
+    scope: ['https://www.googleapis.com/auth/plus.login','email']
   }));
   app.get('/auth/google/callback',passport.authenticate('google', {
     successRedirect: '/#/dashboard',
