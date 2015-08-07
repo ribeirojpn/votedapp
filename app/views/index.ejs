@@ -32,6 +32,9 @@
 						<div class="menu">
 							<ul class="list-unstyled list-inline">
 								<%if (usuarioLogado.length > 0){%>
+									<%if (usuarioPhotoUrl.length > 0){%>
+									<li><img class="user-photo"src="<%= usuarioPhotoUrl %>"></li>
+									<% } %>
 									<li class="user-name"><%= usuarioLogado %></li>
 									<span style="color: #ccc">|</span>
 									<li class="loged-item"><a href="#/dashboard">Dashboard</a></li>

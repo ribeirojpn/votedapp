@@ -17,7 +17,8 @@ module.exports = function () {
   }, function (accessToken, refreshToken, profile, done) {
     User.findOrCreate(
       {'login': profile.emails[0].value},
-      {'name': profile.displayName},
+      {'name': profile.displayName,
+      'photo': profile.photos[0].value},
       function (erro, user) {
         if(erro){
           console.log(erro);
@@ -37,7 +38,8 @@ module.exports = function () {
   }, function (token, tokenSecret, profile, done) {
     User.findOrCreate(
       {'login': profile.username},
-      {'name': profile.displayName},
+      {'name': profile.displayName,
+      'photo': profile.photos[0].value},
       function (erro, user) {
         if(erro){
           console.log(erro);
@@ -57,7 +59,8 @@ module.exports = function () {
   },function(accessToken, refreshToken, profile, done) {
     User.findOrCreate(
       {'login': profile.emails[0].value},
-      {'name': profile.displayName},
+      {'name': profile.displayName,
+      'photo': profile.photos[0].value},
       function (erro, user) {
         if(erro){
           console.log(erro);

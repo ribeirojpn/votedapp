@@ -137,6 +137,9 @@ fieldset li {
   font-size: 16px;
   color: #656565;
 }
+.user-photo {
+  height: 34px;
+}
 .loged-item a{
   font-size: 16px;
   color: #353535;

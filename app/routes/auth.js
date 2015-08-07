@@ -7,7 +7,7 @@ module.exports = function (app) {
     failureRedirect: '/#/auth'
   }));
   // TWITTER OAUTH
-  app.get('/auth/twitter',passport.authenticate('twitter'));
+  app.get('/auth/twitter',passport.authenticate('twitter',{scope: 'photo'}));
   app.get('/auth/twitter/callback',passport.authenticate('twitter', {
     successRedirect: '/#/dashboard',
     failureRedirect: '/#/auth'

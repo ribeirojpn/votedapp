@@ -13,6 +13,9 @@ module.exports = function () {
       type: String,
       require: true
     },
+    photo: {
+      type: String
+    }
   });
   schema.plugin(findOrCreate);
   return mongoose.model('User',schema)
