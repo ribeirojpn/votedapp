@@ -6,3 +6,5 @@ Autenticação com conta do Facebook, Twitter ou Google.
 
  * Usuarios autenticados podem criar e excluir enquetes, votar e visualizar o resultado das enquetes.
  * Usuarios não autenticados podem votar e visualizar o resultado das enquetes.
+
+<a href='https://voted.herokuapp.com/'>https://voted.herokuapp.com/</a>

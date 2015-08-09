@@ -9,6 +9,9 @@ angular.module('voted').controller('ResultController', function ($scope,$resourc
     for (var i in poll.options[0]){
       $scope.total += poll.options[0][i].value;
     }
+    for (var i in poll.options[0]){
+      $scope.poll.options[0][i].porc = poll.options[0][i].value / $scope.total;
+    }
   }, function(erro){
     $scope.mensagem = {
       texto: 'Could not find the poll.'

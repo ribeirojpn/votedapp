@@ -7,7 +7,7 @@
 				<li ng-repeat="option in poll.options[0]">
 					<h5>{{option.name}}: {{option.value}}</h5>
 					<div class="progress">
-					  <div class="progress-bar" role="progressbar" aria-valuenow="{{options.value}}" aria-valuemin="0" aria-valuemax="{{total}}" style="width: {{option.value}}%;">
+					  <div class="progress-bar" role="progressbar" aria-valuenow="{{options.value}}" aria-valuemin="0" aria-valuemax="{{total}}" style="width: {{option.porc*100}}%;">
 					    <span class="sr-only">{{option.name}}: {{option.value}}</span>
 					  </div>
 					</div>
