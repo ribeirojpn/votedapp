@@ -6,7 +6,7 @@ angular.module('voted').controller('NewPollController',function ($scope,$resourc
       texto:'',
 			link:''
   };
-	
+
 	$scope.salva = function () {
 				for (var i = 0; i < $scope.placeholders.length; i++) {
 					  $scope.poll.options[i].value = 0;
@@ -17,7 +17,8 @@ angular.module('voted').controller('NewPollController',function ($scope,$resourc
             .then(function () {
             console.log('Salvo com sucesso');
             $scope.mensagem.texto = 'Enquete criada. Compartilhe o link abaixo para que outras pessoas possam votar.';
-						$scope.mensagem.link = 'http://localhost:3000/#/usr/' + $scope.poll.name;
+						// $scope.mensagem.link = 'http://localhost:3000/#/usr/' + $scope.poll.name;
+						$scope.mensagem.link = 'https://voted.herokuapp.com/#/usr/' + $scope.poll.name;
             $scope.poll = new Poll();
         })
             .catch(function (erro) {
