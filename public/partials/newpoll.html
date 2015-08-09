@@ -1,14 +1,14 @@
 <div class="content">
 	<div class="container">
 		<ul class="nav nav-tabs">
-			<li ><a  ng-href="#/dashboard" >Minhas enquetes</a></li>
-			<li class="active"><a disabled="disabled">Criar enquete</a></li>
+			<li ><a  ng-href="#/dashboard" >My Polls</a></li>
+			<li class="active"><a disabled="disabled">New Poll</a></li>
 		</ul>
 		<div class="newpoll-box"ng-show="mensagem.texto">
 			<h4>{{mensagem.texto}}</h4>
 			<a href='{{mensagem.link}}'><h4>{{mensagem.link}}</h4></a><br/><br/><br/>
 			<button type="button" class="btn btn-default" ng-click="createNewPoll()">
-				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Criar Nova Enquete
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create new Poll
 			</button>
 	  </div>
 		<div class="row" ng-hide='mensagem.texto'>
@@ -17,7 +17,7 @@
 				<form ng-submit="salva()">
 					<div class="form-group">
         				<label for="name">Question</label>
-        				<input type="text" placeholder="Qual foi o melhor filme de super-heroi em 2016?"class="form-control" id="name" required ng-model="poll.name">
+        				<input type="text" placeholder="What was the best movie of 2015?"class="form-control" id="name" required ng-model="poll.name">
     				</div>
 					<label for="poll-options">Options</label>
 					<div class="poll-options">
@@ -25,14 +25,14 @@
 					</div>
 					<div>
 						<button type="button" class="btn btn-default" ng-click="addOption()">
-						  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar opção
+						  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add option
 						</button>
 					</div>
 					</br>
 					</br>
 					<div>
-				    <button type="submit" class="btn btn-primary">Salvar</button>
-				    <a href="#/dashboard" class="btn btn-default">Voltar</a>
+				    <button type="submit" class="btn btn-primary">Save</button>
+				    <a href="#/dashboard" class="btn btn-default">Cancel</a>
 				  </div>
 				</form>
 			</div>

@@ -7,10 +7,9 @@ angular.module('voted').controller("PollController", function ($scope,$routePara
     for (var i in poll.options[0]){
       $scope.total += poll.options[0][i].value;
     }
-    console.log('poll recebida p.');
   }, function(erro){
     $scope.mensagem = {
-      texto: 'Não foi possivel encontrar a enquete.'
+      texto: 'Could not find the poll.'
     };
     console.log(erro);
   });

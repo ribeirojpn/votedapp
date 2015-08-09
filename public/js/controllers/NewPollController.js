@@ -15,15 +15,14 @@ angular.module('voted').controller('NewPollController',function ($scope,$resourc
 				$scope.poll.name =  $scope.poll.name.split('?').join('');
         $scope.poll.$save()
             .then(function () {
-            console.log('Salvo com sucesso');
-            $scope.mensagem.texto = 'Enquete criada. Compartilhe o link abaixo para que outras pessoas possam votar.';
+            $scope.mensagem.texto = 'Poll created. Available in:';
 						// $scope.mensagem.link = 'http://localhost:3000/#/usr/' + $scope.poll.name;
 						$scope.mensagem.link = 'https://voted.herokuapp.com/#/usr/' + $scope.poll.name;
             $scope.poll = new Poll();
         })
             .catch(function (erro) {
-				console.log('Não foi possivel salvar');
-                $scope.mensagem.texto = 'Não foi possivel criar a enquete';
+							console.log('Não foi possivel salvar');
+              $scope.mensagem.texto = 'Could not create the poll';
         });
     };
 		$scope.createNewPoll = function () {

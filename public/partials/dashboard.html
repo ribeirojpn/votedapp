@@ -1,8 +1,8 @@
 <div class="content">
 	<div class="container">
 		<ul class="nav nav-tabs">
-			<li class="active"><a  ng-href="#/dashboard" >Minhas enquetes</a></li>
-			<li ><a ng-href="#/newpoll" disabled="disabled">Criar enquete</a></li>
+			<li class="active"><a  ng-href="#/dashboard" >My Polls</a></li>
+			<li ><a ng-href="#/newpoll" disabled="disabled">New Poll</a></li>
 		</ul>
 		<div class="row">
 			<div class="col-md-4 text-center simple-box" ng-repeat="poll in polls">
@@ -13,24 +13,27 @@
 
 						  <a type="button" class="btn btn-default" ng-href="#/result/{{poll.name}}">
 								<span class="glyphicon glyphicon-stats" aria-hidden="true">
-								</span> Resultado
+								</span> Result
 							</a>
 
 					  </div>
 					  <div class="btn-group" role="group">
 						    <a type="button" class="btn btn-default" ng-href="#/usr/{{poll.name}}">
 									<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-										 Compartilhar
+										 Share
 								</a>
 
 						</div>
 					  <div class="btn-group" role="group">
 					    <button type="button" class="btn btn-default" ng-click='deletePoll(poll)'>
 								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-									 Excluir</button>
+									 Delete</button>
 					  </div>
 				</div>
 			</div>
 		</div>
+	</div>
+	<div ng-show='myPolls.text' class="text-center" style="padding-top:180px;color: #787878;">
+		<p>{{myPolls.text}} <a ng-href='#/newpoll'>here</a>.
 	</div>
 </div>
