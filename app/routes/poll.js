@@ -6,12 +6,12 @@ module.exports = function (app) {
 
 	app.route('/polls/:name')
 		.get(controller.getPollByName)
-		.put(controller.updatePoll)
+		.put(controller.voteInPoll)
 
 	app.route('/user/polls')
 		.get(checkAuth, controller.getUserPolls)
 		.post(checkAuth, controller.savePoll)
-		
+
 	app.route('/user/polls/:id')
 		.get(checkAuth, controller.getPoll)
 		.delete(checkAuth, controller.deletePoll)

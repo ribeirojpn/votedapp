@@ -12,7 +12,7 @@ module.exports = function (app) {
 	};
 
 	controller.getPolls = function (req, res) {
-		Poll.find().where('author').equals(req.user._id).exec().then(function (polls) {
+		Poll.find().exec().then(function (polls) {
 			res.json(polls);
 		},function (erro) {
 			console.error(erro);
@@ -51,19 +51,29 @@ module.exports = function (app) {
 	};
 
 	controller.getPollByName = function (req,res) {
-    console.log('chegou no controller do app');
 		var _name = req.params.name;
 		Poll.findOne({name : _name}).exec().then(function (poll) {
-			if(!poll) throw new Error('Poll não encontrado');
+			if (!poll) {
+				res.status(404).json("Not found");
+			}
 			res.json(poll);
 		},function (erro) {
-			console.log(erro);
 			res.status(404).json(erro);
 		});
 	};
 
 	// TODO Improve vote method
 	controller.updatePoll = function (req,res) {
+    var id = req.body._id;
+    Poll.findByIdAndUpdate(id,req.body).exec().then(
+      function (poll) {
+        res.json(poll);
+    }, function (erro) {
+        res.status(500).json(erro);
+    });
+  }
+
+	controller.voteInPoll = function (req,res) {
     var id = req.body._id;
     Poll.findByIdAndUpdate(id,req.body).exec().then(
       function (poll) {
