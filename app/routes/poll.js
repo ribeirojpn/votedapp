@@ -8,6 +8,14 @@ module.exports = function (app) {
 		.get(controller.getPollByName)
 		.put(controller.updatePoll)
 
+	app.route('/user/polls')
+		.get(checkAuth, controller.getUserPolls)
+		.post(checkAuth, controller.savePoll)
+		
+	app.route('/user/polls/:id')
+		.get(checkAuth, controller.getPoll)
+		.delete(checkAuth, controller.deletePoll)
+
 	function checkAuth(req,res,next) {
 		if (req.isAuthenticated()){
 			return next();
