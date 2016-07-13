@@ -3,10 +3,11 @@ var mongoose = require('mongoose');
 module.exports = function () {
 	var userTest;
 	describe('Poll Routes', function () {
-
+		var User = mongoose.model('User');
+		var Poll = mongoose.model('Poll');
 		beforeEach(function (done) {
-			var User = mongoose.model('User');
-			var Poll = mongoose.model('Poll');
+
+
 
 			User.findOrCreate(
 				{'login': 'test@email.com'},
@@ -64,6 +65,28 @@ module.exports = function () {
 						expect(res.body).to.deep.equal('Not found');
 						done(err);
 					});
+			});
+
+			it('add vote in poll option A', function (done) {
+				Poll.findOneAndUpdate({name:'Test A', "options.name": 'A'},{$inc:{"options.$.value": 1}},{new: true}, function (err, poll) {
+					request.get('/polls/Test%20A')
+						.expect(200)
+						.end(function (err,res) {
+							expect(res.body.options[0].value).to.deep.equal(1);
+							done(err);
+						});
+				});
+			});
+
+			it('add 3 votes in poll option B', function (done) {
+				Poll.findOneAndUpdate({name:'Test A', "options.name": 'B'},{$inc:{"options.$.value": 3}},{new: true}, function (err, poll) {
+					request.get('/polls/Test%20A')
+						.expect(200)
+						.end(function (err,res) {
+							expect(res.body.options[1].value).to.deep.equal(3);
+							done(err);
+						});
+				});
 			});
 		})
 	})
