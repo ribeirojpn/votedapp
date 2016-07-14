@@ -66,7 +66,6 @@ module.exports = function () {
 
 			it('PUT /polls/Test%20A - vote B option in poll "Test A"', function (done) {
 				var vote = {
-					name: 'Test A',
 					option: 'B'
 				};
 
@@ -75,6 +74,20 @@ module.exports = function () {
 					.expect(200)
 					.end(function (err,res) {
 						expect(res.body.options[1].value).to.deep.equal(1);
+						done(err);
+					});
+			});
+
+			it('PUT /polls/Test%20AB - try to vote in "Test AB" but receive a 403 - "Poll not founded"', function (done) {
+				var vote = {
+					option: 'B'
+				};
+
+				request.put('/polls/Test%20ABC')
+					.send(vote)
+					.expect(403)
+					.end(function (err,res) {
+						expect(res.body).to.deep.equal("Poll not founded");
 						done(err);
 					});
 			});

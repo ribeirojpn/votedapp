@@ -64,10 +64,11 @@ module.exports = function (app) {
 
 	controller.voteInPoll = function (req,res) {
     var poll = req.body;
-		Poll.findOneAndUpdate({name:poll.name, "options.name": poll.option},{$inc:{"options.$.value": 1}},{new: true},
+		Poll.findOneAndUpdate({name:req.params.name, "options.name": poll.option},{ $inc: {"options.$.value": 1}},{new: true},
 		 	function (err, poll) {
-				if (err) res.status(500).json(erro);
-				res.json(poll);
+				if (err) return res.status(500).json(erro);
+				if (poll) return res.json(poll);
+				return res.status(403).json("Poll not founded");
 			}
 		);
   }
