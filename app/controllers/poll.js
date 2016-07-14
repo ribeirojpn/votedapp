@@ -62,25 +62,14 @@ module.exports = function (app) {
 		});
 	};
 
-	// TODO Improve vote method
-	controller.updatePoll = function (req,res) {
-    var id = req.body._id;
-    Poll.findByIdAndUpdate(id,req.body).exec().then(
-      function (poll) {
-        res.json(poll);
-    }, function (erro) {
-        res.status(500).json(erro);
-    });
-  }
-
 	controller.voteInPoll = function (req,res) {
-    var id = req.body._id;
-    Poll.findByIdAndUpdate(id,req.body).exec().then(
-      function (poll) {
-        res.json(poll);
-    }, function (erro) {
-        res.status(500).json(erro);
-    });
+    var poll = req.body;
+		Poll.findOneAndUpdate({name:poll.name, "options.name": poll.option},{$inc:{"options.$.value": 1}},{new: true},
+		 	function (err, poll) {
+				if (err) res.status(500).json(erro);
+				res.json(poll);
+			}
+		);
   }
 
 	return controller;

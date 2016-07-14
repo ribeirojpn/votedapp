@@ -6,9 +6,6 @@ module.exports = function () {
 		var User = mongoose.model('User');
 		var Poll = mongoose.model('Poll');
 		beforeEach(function (done) {
-
-
-
 			User.findOrCreate(
 				{'login': 'test@email.com'},
 				{'name': 'testUser',
@@ -49,7 +46,7 @@ module.exports = function () {
 					});
 			});
 
-			it('GET /polls/Test%20A - returns a list with all polls created', function (done) {
+			it('GET /polls/Test%20A - returns a poll named "Test A"', function (done) {
 				request.get('/polls/Test%20A')
 					.expect(200)
 					.end(function (err,res) {
@@ -67,26 +64,19 @@ module.exports = function () {
 					});
 			});
 
-			it('add vote in poll option A', function (done) {
-				Poll.findOneAndUpdate({name:'Test A', "options.name": 'A'},{$inc:{"options.$.value": 1}},{new: true}, function (err, poll) {
-					request.get('/polls/Test%20A')
-						.expect(200)
-						.end(function (err,res) {
-							expect(res.body.options[0].value).to.deep.equal(1);
-							done(err);
-						});
-				});
-			});
+			it('PUT /polls/Test%20A - vote B option in poll "Test A"', function (done) {
+				var vote = {
+					name: 'Test A',
+					option: 'B'
+				};
 
-			it('add 3 votes in poll option B', function (done) {
-				Poll.findOneAndUpdate({name:'Test A', "options.name": 'B'},{$inc:{"options.$.value": 3}},{new: true}, function (err, poll) {
-					request.get('/polls/Test%20A')
-						.expect(200)
-						.end(function (err,res) {
-							expect(res.body.options[1].value).to.deep.equal(3);
-							done(err);
-						});
-				});
+				request.put('/polls/Test%20A')
+					.send(vote)
+					.expect(200)
+					.end(function (err,res) {
+						expect(res.body.options[1].value).to.deep.equal(1);
+						done(err);
+					});
 			});
 		})
 	})
