@@ -78,7 +78,7 @@ module.exports = function () {
 					});
 			});
 
-			it('PUT /polls/Test%20AB - try to vote in "Test AB" but receive a 403 - "Poll not founded"', function (done) {
+			it('PUT /polls/Test%20AB - try to vote in "Test AB" but receive a 403 - "Poll or option not founded"', function (done) {
 				var vote = {
 					option: 'B'
 				};
@@ -87,7 +87,20 @@ module.exports = function () {
 					.send(vote)
 					.expect(403)
 					.end(function (err,res) {
-						expect(res.body).to.deep.equal("Poll not founded");
+						expect(res.body).to.deep.equal("Poll or option not founded");
+						done(err);
+					});
+			});
+			it('PUT /polls/Test%20A - try vote C option in poll "Test A" but receive a 403 - "Poll or option not founded"', function (done) {
+				var vote = {
+					option: 'C'
+				};
+
+				request.put('/polls/Test%20A')
+					.send(vote)
+					.expect(403)
+					.end(function (err,res) {
+						expect(res.body).to.deep.equal("Poll or option not founded");
 						done(err);
 					});
 			});

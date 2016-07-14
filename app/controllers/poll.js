@@ -68,7 +68,7 @@ module.exports = function (app) {
 		 	function (err, poll) {
 				if (err) return res.status(500).json(erro);
 				if (poll) return res.json(poll);
-				return res.status(403).json("Poll not founded");
+				return res.status(403).json("Poll or option not founded");
 			}
 		);
   }
