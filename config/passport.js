@@ -12,8 +12,8 @@ module.exports = function () {
   passport.use(new FacebookStrategy({
     clientID: '497526977087283',
     clientSecret: 'c059fa812eb49748c0f5683da6df17be',
-    // callbackURL: 'http://localhost:3000/auth/facebook/callback',
-    callbackURL: 'https://voted.herokuapp.com/auth/facebook/callback'||'http://localhost:3000/auth/facebook/callback',
+    callbackURL: 'http://localhost:3000/auth/facebook/callback',
+    // callbackURL: 'https://voted.herokuapp.com/auth/facebook/callback'||'http://localhost:3000/auth/facebook/callback',
     profileFields: ['id','displayName','photos','emails']
   }, function (accessToken, refreshToken, profile, done) {
     User.findOrCreate(

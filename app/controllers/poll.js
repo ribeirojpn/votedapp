@@ -56,6 +56,7 @@ module.exports = function (app) {
 			if (!poll) {
 				res.status(404).json("Not found");
 			}
+			console.log(poll)
 			res.json(poll);
 		},function (erro) {
 			res.status(404).json(erro);

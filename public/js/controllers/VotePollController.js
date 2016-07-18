@@ -1,8 +1,11 @@
 angular.module('voted').controller('VotePollController', function ($scope, $routeParams,$http) {
-  $scope.choiced = {name:'asd'};
+  $scope.choiced = {name: ''}
   $scope.mensagem = {text:''}
-  $http.get('/polls/' + $routeParams.pollname, function(poll){
-    $scope.poll = poll;
+  var route = '/polls/' + $routeParams.pollname
+
+  $http.get(route).then(function(poll){
+    $scope.poll = poll.data
+		console.log($scope.poll)
   }, function(erro){
     $scope.mensagem = {
       texto: 'Could not find the poll.'
@@ -12,14 +15,14 @@ angular.module('voted').controller('VotePollController', function ($scope, $rout
 
   $scope.votar = function () {
 		var vote = {
-			option: choiced.name
+			option: $scope.choiced.name
 		};
-		var route = '/polls/' + $routeParams.pollname
-		$http.put(route, vote, function(poll){
+
+		$http.put(route, vote).then( function(poll){
 			$scope.mensagem.text = 'Thanks for your vote!'
 	  }, function(erro){
-			console.error(erro);
-			console.log('Não foi possivel registrar o voto');
+			console.error(erro)
+			console.log('Não foi possivel registrar o voto')
 	  });
   }
 });

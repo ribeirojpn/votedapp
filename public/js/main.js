@@ -22,7 +22,7 @@ angular.module('voted',['ngRoute','ngResource']).config(function ($routeProvider
 		controller: 'PollController'
 	});
 
-	$routeProvider.when('/usr/:pollname', {
+	$routeProvider.when('/poll/:pollname', {
 		templateUrl: 'partials/votepoll.html',
 		controller: 'VotePollController'
 	});
