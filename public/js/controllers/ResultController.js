@@ -1,5 +1,5 @@
 angular.module('voted').controller('ResultController', function ($scope,$resource, $routeParams) {
-  var Poll = $resource('/polls/:pollname');
+  var Poll = $resource('/polls/:pollname')
 
   Poll.get({pollname: $routeParams.pollname}, function(poll){
 
@@ -16,7 +16,7 @@ angular.module('voted').controller('ResultController', function ($scope,$resourc
     $scope.mensagem = {
       texto: 'Could not find the poll.'
     };
-    console.log(erro);
+    console.log(erro)
   });
 
 });
