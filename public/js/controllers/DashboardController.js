@@ -3,7 +3,7 @@ angular.module('voted').controller('DashboardController',function ($scope,$resou
 	$scope.myPolls = {
 		text : ''
 	}
-	var Polls = $resource('/dashboard/:id');
+	var Polls = $resource('/user/polls/:id');
 
 	function getPolls(){
 		Polls.query(function(polls){

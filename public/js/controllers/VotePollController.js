@@ -1,8 +1,7 @@
-angular.module('voted').controller('VotePollController', function ($scope,$resource, $routeParams) {
-  var Poll = $resource('/usr/:pollname');
+angular.module('voted').controller('VotePollController', function ($scope, $routeParams,$http) {
   $scope.choiced = {name:'asd'};
   $scope.mensagem = {text:''}
-  Poll.get({pollname: $routeParams.pollname}, function(poll){
+  $http.get('/polls/' + $routeParams.pollname, function(poll){
     $scope.poll = poll;
   }, function(erro){
     $scope.mensagem = {
@@ -12,19 +11,15 @@ angular.module('voted').controller('VotePollController', function ($scope,$resou
   });
 
   $scope.votar = function () {
-    for (var i in $scope.poll.options[0]){
-      console.log($scope.poll.options[0][i].name);
-      if ($scope.poll.options[0][i].name == $scope.choiced.name){
-        $scope.poll.options[0][i].value += 1;
-      }
-    }
-    $scope.poll.$save()
-        .then(function () {
-        $scope.mensagem.text = 'Thanks for your vote!'
-    })
-        .catch(function (erro) {
-        console.error(erro);
-        console.log('Não foi possivel registrar o voto');
-    });
+		var vote = {
+			option: choiced.name
+		};
+		var route = '/polls/' + $routeParams.pollname
+		$http.put(route, vote, function(poll){
+			$scope.mensagem.text = 'Thanks for your vote!'
+	  }, function(erro){
+			console.error(erro);
+			console.log('Não foi possivel registrar o voto');
+	  });
   }
 });

@@ -91,6 +91,7 @@ module.exports = function () {
 						done(err);
 					});
 			});
+
 			it('PUT /polls/Test%20A - try vote C option in poll "Test A" but receive a 403 - "Poll or option not founded"', function (done) {
 				var vote = {
 					option: 'C'
@@ -104,6 +105,7 @@ module.exports = function () {
 						done(err);
 					});
 			});
+			
 		})
 	})
 }

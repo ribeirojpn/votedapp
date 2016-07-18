@@ -1,5 +1,5 @@
 angular.module('voted').controller("PollController", function ($scope,$routeParams,$resource) {
-  var Poll = $resource('/dashboard/:id');
+  var Poll = $resource('/user/polls/:id');
   Poll.get({id: $routeParams.pollid}, function(poll){
     $scope.poll = poll;
     $scope.total = 0;
