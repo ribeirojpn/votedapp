@@ -1,4 +1,4 @@
-angular.module('voted',['ngRoute','ngResource']).config(function ($routeProvider,$httpProvider) {
+angular.module('voted',['ngRoute']).config(function ($routeProvider,$httpProvider) {
 
 	$httpProvider.interceptors.push('meuInterceptor')
 
