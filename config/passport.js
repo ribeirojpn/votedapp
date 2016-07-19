@@ -13,7 +13,7 @@ module.exports = function () {
     clientID: '497526977087283',
     clientSecret: 'c059fa812eb49748c0f5683da6df17be',
     callbackURL: 'http://localhost:3000/auth/facebook/callback',
-    // callbackURL: 'https://voted.herokuapp.com/auth/facebook/callback'||'http://localhost:3000/auth/facebook/callback',
+    // callbackURL: 'https://voted.herokuapp.com/auth/facebook/callback',
     profileFields: ['id','displayName','photos','emails']
   }, function (accessToken, refreshToken, profile, done) {
     User.findOrCreate(
@@ -35,7 +35,7 @@ module.exports = function () {
     consumerKey: 'VX4YymEHUKbHjljNJHgf0cXOR',
     consumerSecret: 'TtATUc9sjeYFavgE8HV5cdqQpgOy8mZFo3x21zuHFtpPZdN1Ql',
     // callbackURL: "http://localhost:3000/auth/twitter/callback",
-    callbackURL: 'https://voted.herokuapp.com/auth/twitter/callback' || "http://localhost:3000/auth/twitter/callback",
+    callbackURL: 'https://voted.herokuapp.com/auth/twitter/callback',
     profileFields: ['id','displayName','photos','username']
   }, function (token, tokenSecret, profile, done) {
     User.findOrCreate(
@@ -57,7 +57,7 @@ module.exports = function () {
     clientID: '783401917437-0oocrqap97h4vg4rdh08apinmf9tiutk.apps.googleusercontent.com',
     clientSecret: 'ap1mcd6fLJVm_CRrDLpSSZpv',
     // callbackURL: "http://localhost:3000/auth/google/callback",
-    callbackURL: 'https://voted.herokuapp.com/auth/google/callback'|| "http://localhost:3000/auth/google/callback",
+    callbackURL: 'https://voted.herokuapp.com/auth/google/callback',
     profileFields: ['id','displayName','photos','emails']
   },function(accessToken, refreshToken, profile, done) {
     User.findOrCreate(
