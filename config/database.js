@@ -1,25 +1,33 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 module.exports = function (uri) {
-  mongoose.connect(uri);
-  mongoose.set('debug',true);
+	if (process.env.NODE_ENV == 'test'){
+		mongoose.connect(uri + '-test', function(){
+      mongoose.connection.db.dropDatabase(function(){
+				console.log('Cleaning the Database')
+      })
+    })
+	} else {
+		mongoose.connect(uri)
+		mongoose.set('debug',true)
 
-  mongoose.connection.on('connected', function () {
-    console.log('Connected on '+ uri);
-  });
+	  mongoose.connection.on('connected', function () {
+	    console.log('Connected')
+	  })
 
-  mongoose.connection.on('disconnected', function () {
-    console.log('Disconnected on '+ uri);
-  });
+	  mongoose.connection.on('disconnected', function () {
+	    console.log('Disconnected')
+	  })
 
-  mongoose.connection.on('erro', function (erro) {
-    console.log('Erro: ' + erro);
-  });
+	  mongoose.connection.on('erro', function (erro) {
+	    console.log('ERRO: ' + erro)
+	  })
 
-  process.on('SIGINT', function () {
-    mongoose.connection.close(function () {
-      console.log('Desconectado pelo termino da aplicação');
-      process.exit(0);
-    });
-  });
-  
+	  process.on('SIGINT', function () {
+	    mongoose.connection.close(function () {
+	      console.log('Aplicação Finalizada')
+	      process.exit(0)
+	    })
+	  })
+	}
+
 }

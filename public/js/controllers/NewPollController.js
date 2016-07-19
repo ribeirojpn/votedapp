@@ -1,37 +1,40 @@
-angular.module('voted').controller('NewPollController',function ($scope,$resource) {
-	var Poll = $resource('/dashboard/:id');
-	$scope.poll = new Poll();
-  $scope.placeholders = ['Option 1', 'Option 2'];
+angular.module('voted').controller('NewPollController',function ($scope,$http) {
+	$scope.poll = {
+		options: []
+	}
+  $scope.placeholders = ['Option 1', 'Option 2']
   $scope.mensagem = {
       texto:'',
 			link:''
-  };
+  }
+	console.log($scope.poll)
 
 	$scope.salva = function () {
-				for (var i = 0; i < $scope.placeholders.length; i++) {
-					  $scope.poll.options[i].value = 0;
-						console.log($scope.poll.options[i]);
-				}
-				$scope.poll.name =  $scope.poll.name.split('?').join('');
-        $scope.poll.$save()
+				console.log($scope.poll)
+				$scope.poll.name =  $scope.poll.name.split('?').join('')
+				$scope.poll.options.forEach(function (item,index) {
+					$scope.poll.options[index].value = 0
+				})
+				console.log($scope.poll.options)
+        $http.post('/user/polls/',$scope.poll)
             .then(function () {
-            $scope.mensagem.texto = 'Poll created. Available in:';
-						// $scope.mensagem.link = 'http://localhost:3000/#/usr/' + $scope.poll.name;
-						$scope.mensagem.link = 'https://voted.herokuapp.com/#/usr/' + $scope.poll.name;
-            $scope.poll = new Poll();
+            $scope.mensagem.texto = 'Poll created. Available in:'
+						$scope.mensagem.link = window.location.protocol + '//' + window.location.host + '/#/poll/' + $scope.poll.name
+            $scope.poll = {}
         })
             .catch(function (erro) {
-							console.log('Não foi possivel salvar');
-              $scope.mensagem.texto = 'Could not create the poll';
-        });
-    };
+							console.log('Não foi possivel salvar')
+              $scope.mensagem.texto = 'Could not create the poll'
+        })
+    }
+
 		$scope.createNewPoll = function () {
-			$scope.mensagem.texto = '';
-			$scope.mensagem.link = '';
-			$scope.poll = new Poll();
-		};
+			$scope.mensagem.texto = ''
+			$scope.mensagem.link = ''
+			$scope.poll = {}
+		}
 
     $scope.addOption = function () {
-        $scope.placeholders.push('New Option');
+        $scope.placeholders.push('New Option')
     }
-});
+})

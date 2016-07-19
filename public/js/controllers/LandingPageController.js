@@ -1,3 +1,3 @@
-angular.module('voted').controller('LandingPageController',function ($scope,$resource) {
-	
-});
+angular.module('voted').controller('LandingPageController',function ($scope,$http) {
+
+})

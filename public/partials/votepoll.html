@@ -6,7 +6,7 @@
     <div ng-hide='mensagem.text'>
       <ul class="list-unstyled">
         <fieldset>
-      	<li ng-repeat="option in poll.options[0]">
+      	<li ng-repeat="option in poll.options">
       		<input type='radio' ng-model='choiced.name' value="{{option.name}}" id='{{option.name}}'>
           <label for="{{option.name}}">{{option.name}}</label>
       	</li>

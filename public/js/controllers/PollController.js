@@ -1,16 +1,16 @@
-angular.module('voted').controller("PollController", function ($scope,$routeParams,$resource) {
-  var Poll = $resource('/dashboard/:id');
-  Poll.get({id: $routeParams.pollid}, function(poll){
-    $scope.poll = poll;
-    $scope.total = 0;
+angular.module('voted').controller("PollController", function ($scope,$routeParams,$http) {
+	var route = '/user/polls/' + $routeParams.pollid
+  $http.get(route).then(function(poll){
+    $scope.poll = poll.data
+    $scope.total = 0
     $scope.medias = []
-    for (var i in poll.options[0]){
-      $scope.total += poll.options[0][i].value;
+    for (var i in $scope.poll.options){
+      $scope.total += $scope.poll.options[i].value
     }
   }, function(erro){
     $scope.mensagem = {
       texto: 'Could not find the poll.'
-    };
-    console.log(erro);
-  });
-});
+    }
+    console.log(erro)
+  })
+})

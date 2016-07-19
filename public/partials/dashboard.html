@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="col-md-4 text-center simple-box" ng-repeat="poll in polls">
 				<div class="poll-box">
-					<a ng-href="#/dashboard/{{poll._id}}"><h3>{{poll.name}}</h3></a>
+					<a ng-href="#/result/{{poll.name}}"><h3>{{poll.name}}</h3></a>
 					<div class="btn-group btn-group-justified menu-poll" role="group" aria-label="...">
 					  <div class="btn-group" role="group">
 
@@ -18,7 +18,7 @@
 
 					  </div>
 					  <div class="btn-group" role="group">
-						    <a type="button" class="btn btn-default" ng-href="#/usr/{{poll.name}}">
+						    <a type="button" class="btn btn-default" ng-href="#/poll/{{poll.name}}">
 									<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
 										 Share
 								</a>
