@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var findOrCreate = require('mongoose-findorcreate');
+var mongoose = require('mongoose')
+var findOrCreate = require('mongoose-findorcreate')
 module.exports = function () {
   var schema = mongoose.Schema({
     login: {
@@ -16,7 +16,7 @@ module.exports = function () {
     photo: {
       type: String
     }
-  });
-  schema.plugin(findOrCreate);
+  })
+  schema.plugin(findOrCreate)
   return mongoose.model('User',schema)
 }

@@ -1,5 +1,5 @@
 module.exports = function (app) {
-	var controller = app.controllers.poll;
+	var controller = app.controllers.poll
 
 	app.route('/polls')
 		.get(controller.getPolls)
@@ -18,9 +18,9 @@ module.exports = function (app) {
 
 	function checkAuth(req,res,next) {
 		if (req.isAuthenticated()){
-			return next();
+			return next()
 		} else {
-			res.status('401').json('Não autorizado');
+			res.status('401').json('Não autorizado')
 		}
 	}
 }

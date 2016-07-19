@@ -1,12 +1,12 @@
-var passport = require('passport');
-var FacebookStrategy = require('passport-facebook').Strategy;
-var TwitterStrategy = require('passport-twitter').Strategy;
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var mongoose = require('mongoose');
+var passport = require('passport')
+var FacebookStrategy = require('passport-facebook').Strategy
+var TwitterStrategy = require('passport-twitter').Strategy
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
+var mongoose = require('mongoose')
 
 module.exports = function () {
 
-  var User = mongoose.model('User');
+  var User = mongoose.model('User')
 
   // Facebook Oauth Strategy
   passport.use(new FacebookStrategy({
@@ -22,13 +22,13 @@ module.exports = function () {
       'photo': profile.photos[0].value},
       function (erro, user) {
         if(erro){
-          console.log(erro);
-          return done(erro);
+          console.log(erro)
+          return done(erro)
         }
-        return done(null,user);
+        return done(null,user)
       }
     )
-  }));
+  }))
 
   // Twitter Oauth Strategy
   passport.use(new TwitterStrategy({
@@ -44,13 +44,13 @@ module.exports = function () {
       'photo': profile.photos[0].value},
       function (erro, user) {
         if(erro){
-          console.log(erro);
-          return done(erro);
+          console.log(erro)
+          return done(erro)
         }
-        return done(null,user);
+        return done(null,user)
       }
     )
-  }));
+  }))
 
   // Google Oauth2 Strategy
   passport.use(new GoogleStrategy({
@@ -66,21 +66,21 @@ module.exports = function () {
       'photo': profile.photos[0].value},
       function (erro, user) {
         if(erro){
-          console.log(erro);
-          return done(erro);
+          console.log(erro)
+          return done(erro)
         }
-        return done(null,user);
+        return done(null,user)
       }
     )
-  }));
+  }))
 
   passport.serializeUser(function (user,done) {
-    done(null,user._id);
-  });
+    done(null,user._id)
+  })
 
   passport.deserializeUser(function (id,done) {
     User.findById(id).exec().then(function (user) {
-      done(null,user);
-    });
-  });
-};
+      done(null,user)
+    })
+  })
+}

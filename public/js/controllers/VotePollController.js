@@ -9,7 +9,7 @@ angular.module('voted').controller('VotePollController', function ($scope, $rout
     $scope.mensagem = {
       texto: 'Could not find the poll.'
     }
-    console.log(erro);
+    console.log(erro)
   })
 
   $scope.votar = function () {

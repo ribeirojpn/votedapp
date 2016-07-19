@@ -1,22 +1,23 @@
-angular.module('voted').controller('ResultController', function ($scope,$resource, $routeParams) {
-  var Poll = $resource('/polls/:pollname')
-
-  Poll.get({pollname: $routeParams.pollname}, function(poll){
-
-    $scope.poll = poll;
-    $scope.total = 0;
-    $scope.medias = []
-    for (var i in poll.options){
-      $scope.total += poll.options[i].value;
-    }
-    for (var i in poll.options){
-      $scope.poll.options[i].porc = poll.options[i].value / $scope.total;
-    }
+angular.module('voted').controller('ResultController', function ($scope, $routeParams, $http) {
+	var route = '/polls/' + $routeParams.pollname
+  $http.get(route).then(function(poll){
+    $scope.poll = poll.data
+		loadAverage()
   }, function(erro){
     $scope.mensagem = {
       texto: 'Could not find the poll.'
-    };
+    }
     console.log(erro)
-  });
+  })
 
-});
+	function loadAverage() {
+		$scope.total = 0
+    $scope.averages = []
+    for (var i in $scope.poll.options){
+      $scope.total += $scope.poll.options[i].value
+    }
+    for (var i in $scope.poll.options){
+      $scope.poll.options[i].porc = $scope.poll.options[i].value / $scope.total
+    }
+	}
+})

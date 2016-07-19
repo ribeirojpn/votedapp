@@ -10,10 +10,10 @@ angular.module('voted').controller('NewPollController',function ($scope,$http) {
 	console.log($scope.poll)
 
 	$scope.salva = function () {
-						console.log($scope.poll)
+				console.log($scope.poll)
 				$scope.poll.name =  $scope.poll.name.split('?').join('')
 				$scope.poll.options.forEach(function (item,index) {
-					$scope.poll.options[index].value = 0;
+					$scope.poll.options[index].value = 0
 				})
 				console.log($scope.poll.options)
         $http.post('/user/polls/',$scope.poll)
@@ -32,7 +32,7 @@ angular.module('voted').controller('NewPollController',function ($scope,$http) {
 			$scope.mensagem.texto = ''
 			$scope.mensagem.link = ''
 			$scope.poll = {}
-		};
+		}
 
     $scope.addOption = function () {
         $scope.placeholders.push('New Option')
