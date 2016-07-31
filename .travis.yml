@@ -3,6 +3,6 @@ node_js:
   - "6"
 before_script:
   - npm install -g mocha
-  - touch .env
+  - cp .env-sample .env
   - mongo voted-test --eval 'db.addUser("travis", "test");'
 services: mongodb
