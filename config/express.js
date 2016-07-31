@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express = require("express")
 var load = require('express-load')
 var bodyParser= require('body-parser')
@@ -17,7 +18,7 @@ module.exports = function () {
 	app.use(require('method-override')())
 	app.use(cookieParser())
 	app.use(session({
-		secret: 'vala votar',
+		secret: process.env.APP_SESSION_SECRET,
 		resave: true,
 		saveUninitialized: true
 	}))
